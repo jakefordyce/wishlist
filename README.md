@@ -1,5 +1,9 @@
 # README
 
+A website to create and coordinate wishlists.
+
+Currently hosted at: https://sleepy-plateau-32306.herokuapp.com/
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
