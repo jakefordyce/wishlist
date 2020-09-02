@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_182303) do
+ActiveRecord::Schema.define(version: 2020_09_02_183924) do
+
+  create_table "items", force: :cascade do |t|
+    t.integer "list_id"
+    t.string "name"
+    t.text "url"
+    t.text "instructions"
+    t.boolean "purchased"
+    t.boolean "hidden_from_owner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lists", force: :cascade do |t|
     t.string "name", null: false

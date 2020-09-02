@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @item.url %>
+</p>
+
+<p>
+  <strong>Instructions:</strong>
+  <%= @item.instructions %>
+</p>
+
+<p>
+  <strong>Purchased:</strong>
+  <%= @item.purchased %>
+</p>
+
+<p>
+  <strong>Hidden from owner:</strong>
+  <%= @item.hidden_from_owner %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
