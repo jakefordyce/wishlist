@@ -9,3 +9,5 @@
 User.create(email: 'jfordyce@covermymeds.com', username: 'jfordyce', password: 'testing123')
 
 List.create(name: 'Test List 1', user_id: 1)
+
+Item.create(name: 'A cool pen', list_id: 1, url: 'https://www.gouletpens.com/collections/flex-soft-nib-pens/products/noodlers-triple-tail-flex-fountain-pen-clear?variant=30284462850091')
