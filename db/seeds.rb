@@ -10,4 +10,10 @@ User.create(email: 'jfordyce@covermymeds.com', username: 'jfordyce', password: '
 
 List.create(name: 'Test List 1', user_id: 1)
 
+List.create(name: 'Test List 2', user_id: 1)
+
 Item.create(name: 'A cool pen', list_id: 1, url: 'https://www.gouletpens.com/collections/flex-soft-nib-pens/products/noodlers-triple-tail-flex-fountain-pen-clear?variant=30284462850091')
+
+Item.create(name: 'Same cool pen', list_id: 2, url: 'https://www.gouletpens.com/collections/flex-soft-nib-pens/products/noodlers-triple-tail-flex-fountain-pen-clear?variant=30284462850091')
+
+Item.create(name: 'A cool ink', list_id: 1, url: 'https://www.gouletpens.com/collections/bottled-ink/products/noodlers-54th-massachusetts-3oz-bottled-ink?variant=11884740509739')
