@@ -11,6 +11,7 @@ class ListsController < ApplicationController
   # GET /lists/1.json
   def show
     @comments = @list.comments
+    @comment = Comment.new
     @items = @list.items
   end
 
