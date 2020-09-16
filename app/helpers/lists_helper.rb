@@ -1,7 +1,7 @@
 module ListsHelper
 
   def list_belongs_to_user?(list)
-    list.user_id == current_user
+    list.user_id == current_user.id
   end
 
 end
