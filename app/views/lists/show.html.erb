@@ -8,8 +8,8 @@
   </div>
 <% end %>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && !list_belongs_to_user?(@list)%>
   <%= render 'comments/form', comment: @comment, list_id: @list.id %>
-<% end %>
 
-<%= render partial: 'comments/comment', collection: @comments %>
+  <%= render partial: 'comments/comment', collection: @comments %>
+<% end %>
