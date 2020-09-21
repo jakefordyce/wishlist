@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def show
 
     @lists = User.find(params[:id]).lists
-
+    @list = List.new
   end
 
   # GET /resource/sign_up

@@ -1,5 +1,7 @@
+<%= render 'lists/form', list: @list %>
+
 <% @lists.each do |list| %>
 <div>
-  <p><%= list.name %></p>
+  <p><%= link_to list.name, list_path(list) %></p>
 </div>
 <% end %>
