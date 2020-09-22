@@ -1,4 +1,6 @@
-<%= render 'lists/form', list: @list %>
+<% if current_user == @user %>
+  <%= render 'lists/form', list: @list %>
+<% end %>
 
 <% @lists.each do |list| %>
 <div>

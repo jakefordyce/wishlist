@@ -5,8 +5,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   def show
-
-    @lists = User.find(params[:id]).lists
+    @user = User.find(params[:id])
+    @lists = @user.lists
     @list = List.new
   end
 
