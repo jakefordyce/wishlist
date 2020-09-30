@@ -6,6 +6,8 @@
   <div>
     <%= item.name  %>
     <%= link_to 'Buy Here', item.url %>
+    <%= item.instructions %>
+
     <% if user_signed_in? && list_belongs_to_user?(@list) %>
       <%= link_to 'edit', item %>
     <% end %>
