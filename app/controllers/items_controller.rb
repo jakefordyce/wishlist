@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @list = List.find(params[:list_id])
   end
 
   # GET /items/1/edit
@@ -56,8 +57,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to root, notice: 'Item was successfully destroyed.' }
     end
   end
 
@@ -69,6 +69,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :url, :instructions, :purchased, :hidden_from_owner)
+      params.require(:item).permit(:name, :url, :instructions, :purchased, :hidden_from_owner, :list_id)
     end
 end

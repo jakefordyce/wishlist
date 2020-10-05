@@ -36,6 +36,8 @@
     <%= form.check_box :hidden_from_owner %>
   </div>
 
+  <%= form.hidden_field :list_id, :value => @list.id %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
