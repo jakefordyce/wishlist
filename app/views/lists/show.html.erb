@@ -14,7 +14,7 @@
       <%= link_to 'edit', item %>
     <% end %>
     <% if user_signed_in? && list_belongs_to_user?(@list) %>
-      <%= link_to 'delete', item_path, method: :delete %>
+      <%= link_to 'delete', item, method: :delete %>
     <% end %>
   </div>
 <% end %>
