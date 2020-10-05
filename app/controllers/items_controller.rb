@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to list_path(@item.list_id), notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -55,9 +55,11 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    list_id = @item.list_id
     @item.destroy
+
     respond_to do |format|
-      format.html { redirect_to root, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to list_path(list_id), notice: 'Item was successfully destroyed.' }
     end
   end
 
