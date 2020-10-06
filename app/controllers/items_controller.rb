@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    @item.url = helpers.full_url(@item.url)
 
     respond_to do |format|
       if @item.save
