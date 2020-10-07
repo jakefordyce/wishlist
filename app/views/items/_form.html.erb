@@ -26,11 +26,6 @@
     <%= form.text_area :instructions %>
   </div>
 
-  <div class="field">
-    <%= form.label :purchased %>
-    <%= form.check_box :purchased %>
-  </div>
-
   <% if !list_belongs_to_user?(@list)%>
     <div class="field">
       <%= form.label :hidden_from_owner %>

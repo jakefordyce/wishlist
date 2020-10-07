@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_07_132842) do
+ActiveRecord::Schema.define(version: 2020_10_07_135659) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_10_07_132842) do
     t.string "name"
     t.text "url"
     t.text "instructions"
-    t.boolean "purchased"
+    t.boolean "purchased", default: false, null: false
     t.boolean "hidden_from_owner", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
