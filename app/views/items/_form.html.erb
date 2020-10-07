@@ -31,10 +31,12 @@
     <%= form.check_box :purchased %>
   </div>
 
-  <div class="field">
-    <%= form.label :hidden_from_owner %>
-    <%= form.check_box :hidden_from_owner %>
-  </div>
+  <% if !list_belongs_to_user?(@list)%>
+    <div class="field">
+      <%= form.label :hidden_from_owner %>
+      <%= form.check_box :hidden_from_owner %>
+    </div>
+  <% end %>
 
   <%= form.hidden_field :list_id, :value => @list.id %>
 
