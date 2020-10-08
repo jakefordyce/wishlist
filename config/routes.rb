@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :collaborations
   devise_for :users, controllers: { registrations: 'users/registrations' }
   devise_scope :user do
     get 'users/:id', to: 'users/registrations#show', as: 'profile'
