@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :collaborations
   devise_for :users, controllers: { registrations: 'users/registrations' }
   devise_scope :user do
     get 'users/:id', to: 'users/registrations#show', as: 'profile'
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :items
   resources :lists
+  resources :collaborations
 
   get 'static_pages/home'
   root to: "static_pages#home"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_08_161011) do
+ActiveRecord::Schema.define(version: 2020_10_08_191438) do
 
   create_table "collaborations", force: :cascade do |t|
     t.integer "collaborator_id", null: false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_10_08_161011) do
     t.boolean "hidden_from_owner", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "purchaser_id"
   end
 
   create_table "lists", force: :cascade do |t|
