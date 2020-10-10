@@ -1,0 +1,17 @@
+<%= form_with(model: collab_request, local: true) do |form| %>
+  <% if collab_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(collab_request.errors.count, "error") %> prohibited this collab_request from being saved:</h2>
+
+      <ul>
+      <% collab_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

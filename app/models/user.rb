@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :collaborations, class_name: "Collaboration", foreign_key: "collaborator_id"
   has_many :collabs, class_name: 'List', through: :collaborations
   has_many :purchased, class_name: 'Item', foreign_key: 'purchaser_id'
+  has_many :collab_requests
 end
