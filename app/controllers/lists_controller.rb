@@ -13,6 +13,7 @@ class ListsController < ApplicationController
     @comments = @list.comments
     @comment = Comment.new
     @items = @list.items
+    @collaborators = @list.collaborators
   end
 
   # GET /lists/new
