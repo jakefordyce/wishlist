@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_08_191438) do
+ActiveRecord::Schema.define(version: 2020_10_10_015100) do
+
+  create_table "collab_requests", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "list_id", null: false
+    t.boolean "from_owner", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "collaborations", force: :cascade do |t|
     t.integer "collaborator_id", null: false

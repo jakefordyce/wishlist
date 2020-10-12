@@ -32,7 +32,7 @@
     <% if user_signed_in? && list_belongs_to_user?(@list) %>
       invite
     <% elsif user_signed_in? && !list_belongs_to_user?(@list)%>
-      request to join
+      <%= button_to 'request to join', collab_requests_path(collab_request: {user_id: current_user.id, list_id: @list.id, from_owner: false}) %>
     <% end %>
     <% @collaborators.each do |collab| %>
       <div>
@@ -41,6 +41,7 @@
     <% end %>
   </div>
 </div>
+
 <% if user_signed_in? && !list_belongs_to_user?(@list)%>
   <%= render 'comments/form', comment: @comment, list_id: @list.id %>
 

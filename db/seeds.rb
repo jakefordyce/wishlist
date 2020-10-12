@@ -28,6 +28,4 @@ Item.create(name: 'Same cool pen', list_id: 2, url: 'https://www.gouletpens.com/
 
 Item.create(name: 'A cool ink', list_id: 1, url: 'https://www.gouletpens.com/collections/bottled-ink/products/noodlers-54th-massachusetts-3oz-bottled-ink?variant=11884740509739')
 
-Comment.create(user_id: 1, list_id: 1, body: "wow nice fake list!")
-
 Comment.create(user_id: 2, list_id: 1, body: "Meh, I've seen better.")

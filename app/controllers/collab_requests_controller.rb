@@ -28,8 +28,7 @@ class CollabRequestsController < ApplicationController
 
     respond_to do |format|
       if @collab_request.save
-        format.html { redirect_to @collab_request, notice: 'Collab request was successfully created.' }
-        format.json { render :show, status: :created, location: @collab_request }
+        format.html { redirect_to list_path(@collab_request.list_id), notice: 'Collab request was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @collab_request.errors, status: :unprocessable_entity }
