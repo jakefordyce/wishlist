@@ -24,12 +24,13 @@ class CollaborationsController < ApplicationController
   # POST /collaborations
   # POST /collaborations.json
   def create
-    @collaboration = Collaboration.new(collaboration_params)
+    @request = CollabRequest.find(request_params)
+    @collaboration = Collaboration.new(collaborator_id: @request.user_id, collab_id: @request.list_id)
 
     respond_to do |format|
       if @collaboration.save
-        format.html { redirect_to @collaboration, notice: 'Collaboration was successfully created.' }
-        format.json { render :show, status: :created, location: @collaboration }
+        @request.destroy
+        format.html { redirect_to collab_requests_path, notice: 'Request accepted.' }
       else
         format.html { render :new }
         format.json { render json: @collaboration.errors, status: :unprocessable_entity }
@@ -68,7 +69,11 @@ class CollaborationsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    def request_params
+      params.require(:collab_request)
+    end
+
     def collaboration_params
-      params.fetch(:collaboration, {})
+
     end
 end

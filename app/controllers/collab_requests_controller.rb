@@ -4,7 +4,7 @@ class CollabRequestsController < ApplicationController
   # GET /collab_requests
   # GET /collab_requests.json
   def index
-    @collab_requests = CollabRequest.all
+    @collab_requests = CollabRequest.joins(:list).where(lists: {user_id: current_user.id})
   end
 
   # GET /collab_requests/1
