@@ -29,6 +29,7 @@ gem 'devise'
 # Use bootstrap for styling
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'ransack'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
