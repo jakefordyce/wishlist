@@ -14,9 +14,28 @@ document.addEventListener("turbolinks:load", function() {
     ],
     list: {
       onChooseEvent: function() {
-        var url = $input.getSelectedItemData().url
+        var user_id = $input.getSelectedItemData().user_id
+        var list_id = location.toString().substr(location.toString().lastIndexOf('/')+1)
+
         $input.val("")
-        Turbolinks.visit(url)
+
+        /* keeping the shape of the data here for future reference.
+        {
+            collab_request: {
+              user_id: user_id,
+              list_id: list_id,
+              from_owner: 1
+            }
+          },
+        */
+
+        request_data = `collab_request[user_id]=${user_id}&collab_request[list_id]=${list_id}&collab_request[from_owner]=1`
+
+        Rails.ajax({
+          url: "/collab_requests",
+          type: "POST",
+          data: request_data
+        })
       }
     }
   }

@@ -68,6 +68,7 @@ class CollabRequestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def collab_request_params
+      puts "params here: " + params.inspect
       params.require(:collab_request).permit(:user_id, :list_id, :from_owner)
     end
 end
