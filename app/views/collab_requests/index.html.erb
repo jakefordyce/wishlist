@@ -20,3 +20,24 @@
 </table>
 
 <br>
+
+<h3>Collaboration Invites</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @collab_invites.each do |collab_invite| %>
+      <tr>
+        <td><%= collab_invite.list.user.username %></td>
+        <td>List: <%= collab_invite.list.name %></td>
+        <td><%= link_to 'Accept', collaborations_path(collab_request: collab_invite), method: :post %></td>
+        <td><%= link_to 'Deny', collab_invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
