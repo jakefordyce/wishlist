@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :collab_requests
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   devise_scope :user do
     get 'users/:id', to: 'users/registrations#show', as: 'profile'
   end

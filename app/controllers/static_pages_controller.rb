@@ -4,6 +4,8 @@ class StaticPagesController < ApplicationController
     @lists = []
     if user_signed_in?
       @lists = current_user.lists
+    else
+      redirect_to new_user_session_path
     end
   end
 
