@@ -2,7 +2,7 @@
   <div class="col-md-8">
     <h3><%= @list.name %> <small>by: <%= @list.user.username %></small></h3>
 
-    <% if user_signed_in? && list_belongs_to_user?(@list)%>
+    <% if list_belongs_to_user?(@list)%>
       <%= link_to 'Edit List Properties', edit_list_path(@list) %>
     <% end %>
     <br />
@@ -14,14 +14,12 @@
         <%= link_to 'Buy Here', item.url %>
         <%= item.instructions %>
 
-        <% if user_signed_in? && list_belongs_to_user?(@list) %>
+        <% if list_belongs_to_user?(@list) %>
           <%= link_to 'edit', item %>
-        <% end %>
-        <% if user_signed_in? && list_belongs_to_user?(@list) %>
           <%= link_to 'delete', item, method: :delete %>
         <% end %>
         <%# also check if item is already purchased %>
-        <% if user_signed_in? && !list_belongs_to_user?(@list)%>
+        <% if user_can_participate?(@list)%>
           Mark as Purchased.
         <% end %>
       </div>
@@ -29,7 +27,7 @@
   </div>
   <div class="col-md-4">
     <h5>Collaborators</h5>
-    <% if user_signed_in? && list_belongs_to_user?(@list) %>
+    <% if list_belongs_to_user?(@list) %>
       <%= form_with url: search_path, local: true, method: :get do |form| %>
         <%= form.text_field :q, placeholder: "Invite", data: {behavior: "autocomplete"} %>
         <%= form.button "Search", class: "btn btn-outline-success" %>
@@ -45,7 +43,7 @@
   </div>
 </div>
 
-<% if user_signed_in? && !list_belongs_to_user?(@list)%>
+<% if user_can_participate?(@list)%>
   <%= render 'comments/form', comment: @comment, list_id: @list.id %>
 
   <%= render partial: 'comments/comment', collection: @comments %>

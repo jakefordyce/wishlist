@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to list_path(@item.list_id), notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
+        @list = List.find(@item.list_id)
         format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
