@@ -1,10 +1,11 @@
 document.addEventListener("turbolinks:load", function() {
   $input = $("[data-behavior='autocomplete']")
+  var list_id = location.toString().substr(location.toString().lastIndexOf('/')+1)
 
   var options = {
     getValue: "name",
     url: function(phrase) {
-      return "/search.json?q=" + phrase
+      return "/search.json?q=" + phrase + "&list_id=" + list_id
     },
     categories: [
       {
@@ -15,7 +16,6 @@ document.addEventListener("turbolinks:load", function() {
     list: {
       onChooseEvent: function() {
         var user_id = $input.getSelectedItemData().user_id
-        var list_id = location.toString().substr(location.toString().lastIndexOf('/')+1)
 
         $input.val("")
 
