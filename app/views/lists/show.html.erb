@@ -32,7 +32,7 @@
         <%= form.text_field :q, placeholder: "Invite", data: {behavior: "autocomplete"} %>
         <%= form.button "Search", class: "btn btn-outline-success" %>
       <% end %>
-    <% elsif user_signed_in? && !list_belongs_to_user?(@list)%>
+    <% elsif show_request_button?(@list)%>
       <%= button_to 'request to join', collab_requests_path(collab_request: {user_id: current_user.id, list_id: @list.id, from_owner: false}) %>
     <% end %>
     <% @collaborators.each do |collab| %>
