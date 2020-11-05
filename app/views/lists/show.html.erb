@@ -20,7 +20,7 @@
         <% end %>
         <%# also check if item is already purchased %>
         <% if user_can_participate?(@list)%>
-          Mark as Purchased.
+          <%= button_to 'Mark as Purchased', item_path(item: {purchaser_id: current_user.id}), method: :put %>
         <% end %>
       </div>
     <% end %>
