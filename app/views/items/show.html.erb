@@ -20,10 +20,12 @@
   <%= @item.purchased %>
 </p>
 
+<% if @item.purchaser %>
 <p>
   <strong>Purchased By:</strong>
   <%= @item.purchaser.username %>
 </p>
+<% end %>
 
 <p>
   <strong>Hidden from owner:</strong>
