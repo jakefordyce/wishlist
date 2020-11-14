@@ -37,7 +37,7 @@
     <% end %>
     <% @collaborators.each do |collab| %>
       <div>
-        <%= collab.username %>
+        <%= link_to collab.username, profile_path(collab.id) %>
       </div>
     <% end %>
   </div>
