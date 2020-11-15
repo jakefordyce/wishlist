@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :destroy]
-
+  include ListsHelper
   # GET /items
   # GET /items.json
   def index
@@ -45,13 +45,15 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     @item = Item.find(params[:item_id])
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to list_path(@item.list.id), notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
-      else
-        format.html { render :edit }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+    if(user_can_participate?(@item.list))
+      respond_to do |format|
+        if @item.update(item_params)
+          format.html { redirect_to list_path(@item.list.id), notice: 'Item was successfully updated.' }
+          format.json { render :show, status: :ok, location: @item }
+        else
+          format.html { render :edit }
+          format.json { render json: @item.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
