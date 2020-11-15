@@ -2,8 +2,10 @@ class StaticPagesController < ApplicationController
 
   def home
     @lists = []
+    @collabs = []
     if user_signed_in?
       @lists = current_user.lists
+      @collabs = current_user.collabs
     else
       redirect_to new_user_session_path
     end
