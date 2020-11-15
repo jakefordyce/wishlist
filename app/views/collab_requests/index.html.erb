@@ -33,8 +33,8 @@
   <tbody>
     <% @collab_invites.each do |collab_invite| %>
       <tr>
-        <td><%= collab_invite.list.user.username %></td>
-        <td>List: <%= collab_invite.list.name %></td>
+        <td><%= link_to collab_invite.list.user.username, profile_path(collab_invite.list.user.id) %></td>
+        <td>List: <%= link_to collab_invite.list.name, list_path(collab_invite.list.id) %></td>
         <td><%= link_to 'Accept', collaborations_path(collab_request: collab_invite), method: :post %></td>
         <td><%= link_to 'Deny', collab_invite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
