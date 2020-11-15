@@ -1,6 +1,9 @@
 <% if current_user == @user %>
+  <h3>Your lists</h3>
   <%#= render 'lists/form', list: @list %>
   <%= link_to "Create a new list", new_list_path %>
+<%else%>
+  <h3><%= @user.username %>'s lists</h3>
 <% end %>
 <br/>
 <br/>

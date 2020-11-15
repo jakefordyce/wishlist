@@ -8,22 +8,24 @@
     <br />
     <%= link_to 'New Item', new_item_path(list_id: @list.id)%>
 
+    <table>
     <% @items.each do |item| %>
-      <div>
-        <%= item.name  %>
-        <%= link_to 'Buy Here', item.url %>
-        <%= item.instructions %>
+      <tr>
+        <td><%= item.name  %></td>
+        <td><%= link_to 'Buy Here', item.url %></td>
+        <td><%= item.instructions %></td>
 
         <% if list_belongs_to_user?(@list) %>
-          <%= link_to 'edit', item %>
-          <%= link_to 'delete', item, method: :delete %>
+          <td><%= link_to 'edit', item %></td>
+          <td><%= link_to 'delete', item, method: :delete %></td>
         <% end %>
         <%# also check if item is already purchased %>
         <% if user_can_participate?(@list) && !item.purchaser %>
-          <%= button_to 'Mark as Purchased', item_path(item: {purchaser_id: current_user.id}, item_id: item.id), method: :put %>
+          <td><%= button_to 'Mark as Purchased', item_path(item: {purchaser_id: current_user.id}, item_id: item.id), method: :put %></td>
         <% end %>
-      </div>
+      </tr>
     <% end %>
+    </table>
   </div>
   <div class="col-md-4">
     <h5>Collaborators</h5>
