@@ -19,7 +19,7 @@
           <td><%= link_to 'edit', item %></td>
           <td><%= link_to 'delete', item, method: :delete %></td>
         <% end %>
-        <%# also check if item is already purchased %>
+
         <% if user_can_participate?(@list) && !item.purchaser %>
           <td><%= button_to 'Mark as Purchased', item_path(item: {purchaser_id: current_user.id}, item_id: item.id), method: :put %></td>
         <% end %>
