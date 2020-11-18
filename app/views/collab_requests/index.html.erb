@@ -10,8 +10,8 @@
   <tbody>
     <% @collab_requests.each do |collab_request| %>
       <tr>
-        <td><%= collab_request.user.username %></td>
-        <td>List: <%= collab_request.list.name %></td>
+        <td><%= link_to collab_request.user.username, profile_path(collab_request.user.id) %></td>
+        <td>List: <%= link_to collab_request.list.name, list_path(collab_request.list.id) %></td>
         <td><%= link_to 'Accept', collaborations_path(collab_request: collab_request), method: :post %></td>
         <td><%= link_to 'Deny', collab_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
