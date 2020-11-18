@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/:id', to: 'users/registrations#show', as: 'profile'
   end
-  resources :comments
-  resources :items
-  resources :lists
+  resources :comments, except: [:index, :show]
+  resources :items, except: [:index]
+  resources :lists, except: [:index]
   resources :collaborations
 
   get 'static_pages/home'

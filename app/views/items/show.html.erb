@@ -15,16 +15,11 @@
   <%= @item.instructions %>
 </p>
 
-<p>
-  <strong>Purchased:</strong>
-  <%= @item.purchased %>
-</p>
-
-<% if @item.purchaser %>
-<p>
-  <strong>Purchased By:</strong>
-  <%= @item.purchaser.username %>
-</p>
+<% if @item.purchaser && user_can_participate?(@item.list) %>
+  <p>
+    <strong>Purchased By:</strong>
+    <%= @item.purchaser.username %>
+  </p>
 <% end %>
 
 <p>
@@ -32,5 +27,4 @@
   <%= @item.hidden_from_owner %>
 </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'Edit', edit_item_path(@item) %>
