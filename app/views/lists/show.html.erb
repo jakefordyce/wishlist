@@ -39,6 +39,8 @@
       <% end %>
     <% elsif show_request_button?(@list)%>
       <%= button_to 'request to join', collab_requests_path(collab_request: {user_id: current_user.id, list_id: @list.id, from_owner: false}) %>
+    <% elsif show_request_sent?(@list) %>
+      request pending approval.
     <% end %>
     <% @collaborators.each do |collab| %>
       <div>

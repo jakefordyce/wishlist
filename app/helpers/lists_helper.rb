@@ -16,4 +16,8 @@ module ListsHelper
     !CollabRequest.exists?(user: current_user, list: list)
   end
 
+  def show_request_sent?(list)
+    CollabRequest.exists?(user: current_user, list: list)
+  end
+
 end
