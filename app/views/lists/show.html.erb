@@ -23,6 +23,8 @@
 
         <% if user_can_participate?(@list) && !item.purchaser %>
           <td><%= button_to 'Mark as Purchased', item_path(item: {purchaser_id: current_user.id}, item_id: item.id), method: :put %></td>
+        <% elsif user_can_participate?(@list) && item.purchased? %>
+          <td> purchased by: <%= item.purchaser.username %></td>
         <% end %>
       </tr>
     <% end %>
