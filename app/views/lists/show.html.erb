@@ -16,8 +16,8 @@
         <td><%= link_to 'Buy Here', item.url %></td>
         <td><%= item.instructions %></td>
 
-        <% if list_belongs_to_user?(@list) %>
-          <td><%= link_to 'edit', item %></td>
+        <% if list_belongs_to_user?(@list) || user_can_participate?(@list) %>
+          <td><%= link_to 'edit', edit_item_path(item) %></td>
           <td><%= link_to 'delete', item, method: :delete %></td>
         <% end %>
 
