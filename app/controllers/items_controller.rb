@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     @item = Item.find(params[:item_id])
-    if(user_can_participate?(@item.list))
+    if(user_can_participate?(@item.list) || list_belongs_to_user?(@item.list))
       respond_to do |format|
         if @item.update(item_params)
           format.html { redirect_to list_path(@item.list.id), notice: 'Item was successfully updated.' }
