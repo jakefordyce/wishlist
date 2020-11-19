@@ -1,18 +1,20 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col">
     <h3><%= @list.name %> <small>by: <%= @list.user.username %></small></h3>
 
     <% if list_belongs_to_user?(@list)%>
       <%= link_to 'Edit List Properties', edit_list_path(@list) %>
     <% end %>
     <br />
-    <% if user_can_participate?(@list)%>
+    <% if list_belongs_to_user?(@list) || user_can_participate?(@list)%>
       <%= link_to 'New Item', new_item_path(list_id: @list.id)%>
+      <br/>
+      <br/>
     <% end %>
-    <table>
+    <table class="table">
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.name  %></td>
+        <td class="w-auto"><%= item.name  %></td>
         <td><%= link_to 'Buy Here', item.url %></td>
         <td><%= item.instructions %></td>
 
@@ -30,7 +32,7 @@
     <% end %>
     </table>
   </div>
-  <div class="col-md-4">
+  <div class="col-auto">
     <h5>Collaborators</h5>
     <% if list_belongs_to_user?(@list) %>
       <%= form_with url: search_path, local: true, method: :get do |form| %>
