@@ -12,9 +12,12 @@ class StaticPagesController < ApplicationController
   end
 
   def search
+    filtered_users = User.joins(:collaborations).where(collaborations: {collab_id: params[:list_id]})
+    filtered_users += User.where(id: current_user.id)
+
     @users = User.ransack(username_cont: params[:q])
             .result(distinct: true)
-            .joins(:collaborations).where.not(collaborations: {collab_id: params[:list_id]})
+            .where.not(id: filtered_users)
 
     respond_to do |format|
       format.html {}
