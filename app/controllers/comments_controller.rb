@@ -29,9 +29,9 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        redirect_to @comment.list, notice: 'Comment was successfully created.'
+        format.html{ redirect_to @comment.list, notice: 'Comment was successfully created.'}
       else
-        flash.now[:alert] = 'Failed to save comment.'
+        format.html{ flash.now[:alert] = 'Failed to save comment.' }
       end
     end
   end
