@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col">
+  <div class="col-md-9">
     <h3><%= @list.name %> <small>by: <%= @list.user.username %></small></h3>
 
     <% if list_belongs_to_user?(@list)%>
@@ -11,28 +11,30 @@
       <br/>
       <br/>
     <% end %>
-    <table class="table">
-    <% @items.each do |item| %>
-      <tr>
-        <td class="w-auto"><%= item.name  %></td>
-        <td><%= link_to 'Buy Here', item.url %></td>
-        <td><%= item.instructions %></td>
+    <div class="table-responsive">
+      <table class="table">
+      <% @items.each do |item| %>
+        <tr>
+          <td class="w-auto"><%= item.name  %></td>
+          <td><%= link_to 'Buy Here', item.url %></td>
+          <td><%= item.instructions %></td>
 
-        <% if list_belongs_to_user?(@list) || user_can_participate?(@list) %>
-          <td><%= link_to 'edit', edit_item_path(item) %></td>
-          <td><%= link_to 'delete', item, method: :delete %></td>
-        <% end %>
+          <% if list_belongs_to_user?(@list) || user_can_participate?(@list) %>
+            <td><%= link_to 'edit', edit_item_path(item) %></td>
+            <td><%= link_to 'delete', item, method: :delete %></td>
+          <% end %>
 
-        <% if user_can_participate?(@list) && !item.purchaser %>
-          <td><%= button_to 'Mark as Purchased', item_path(item: {purchaser_id: current_user.id}, item_id: item.id), method: :put %></td>
-        <% elsif user_can_participate?(@list) && item.purchased? %>
-          <td> purchased by: <%= item.purchaser.username %></td>
-        <% end %>
-      </tr>
-    <% end %>
-    </table>
+          <% if user_can_participate?(@list) && !item.purchaser %>
+            <td><%= button_to 'Mark as Purchased', item_path(item: {purchaser_id: current_user.id}, item_id: item.id), method: :put %></td>
+          <% elsif user_can_participate?(@list) && item.purchased? %>
+            <td> purchased by: <%= item.purchaser.username %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      </table>
+    </div>
   </div>
-  <div class="col-auto">
+  <div class="col-md-3">
     <h5>Collaborators</h5>
     <% if list_belongs_to_user?(@list) %>
       <%= form_with url: search_path, local: true, method: :get do |form| %>
