@@ -1,0 +1,9 @@
+<h5>Results for Search: </h5>
+<table class="table">
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.username, profile_path(user.id) %></td>
+      <td><%= link_to 'Invite', collab_requests_path(collab_request: {user_id: user.id, list_id: @list.id, from_owner: true}), method: :post %> </td>
+    </tr>
+  <% end %>
+</table>
