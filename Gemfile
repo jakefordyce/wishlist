@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use devise for authentication
-gem 'devise'
+gem 'devise', ">= 4.8"
 # Use bootstrap for styling
 gem 'bootstrap'
 gem 'jquery-rails'
@@ -39,6 +39,9 @@ gem 'ransack'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
